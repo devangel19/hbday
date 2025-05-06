@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat Ulang Tahun</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #333;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #e91e63;
+      animation: fadeIn 2s ease-in;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 20px;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .cool-button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      background: linear-gradient(45deg, #ff4081, #81d4fa, #ffeb3b, #8bc34a);
+      background-size: 300% 300%;
+      color: white;
+      font-size: 1em;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+      animation: gradient 6s ease infinite;
+      display: inline-block;
+    }
+
+    .cool-button:hover {
+      transform: scale(1.08) rotate(-1deg);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ANIMASI HATI */
+    .hearts {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: float 5s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio HTML.
+  </audio>
+
+  <div class="card">
+    <h1>Happy Birthday Ester!!</h1>
+    <p>haii selamat ulang tahunn.. disini aku cuma mau ucapin hal yang paling penting dan selamat ulang tahun kamuu, hari ini adalah hari spesial buat kamuu jadi aku mau ucapin kata kata ini for youuu. makasih pernah hadir dihati aku walaupun cuma sebentarr, aku ucapin "makasih" bukan karna akuu caper ataupun yang lain yaa, aku doain semogaa kamu bisa menjadi pribadi yang lebih baik lagi dan bisa memilih jalan keluar dengan bijak. dan semoga dengan hari ulang tahun kamuu, kamuu bisa berenti dengan insecuree.. sebenernya kamu itu cantikk tapi kamu insecuree teruss :(( gaboleh insecure teruss yaa?? harus bersyukur, didunia ini pasti ada yang insecure sama kamuu dan kamu itu harus banggaa. sekali lagi happy birthday ex be happy.</p>
+    
+    <button class="cool-button" onclick="showMessage()">Klik kalau masih ingat aku</button>
+    <br>
+    <button class="cool-button" onclick="window.open('https://ngl.link/jiel71481', '_blank')">klik disini buat bales yaa, bebas mau bales atau ngga juga gapapa</button>
+    
+    <p id="hiddenMessage" style="display:none; margin-top:20px;"></p>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    function showMessage() {
+      const message = document.getElementById("hiddenMessage");
+      message.innerText = "makasii atas kenangan yang pernah ada, maaf yaa aku ninggalin kamu tiba-tiba";
+      message.style.display = "block";
+    }
+
+    // Generate hearts
+    const heartsContainer = document.getElementById('hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      heartsContainer.appendChild(heart);
+      setTimeout(() => {
+        heartsContainer.removeChild(heart);
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
